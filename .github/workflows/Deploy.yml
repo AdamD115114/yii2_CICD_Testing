@@ -1,0 +1,19 @@
+name: Deploy SafetyManager for EcoOnline
+
+
+on: [workflow_dispatch]
+
+jobs: 
+  deploy: 
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: SetUp PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          
+      - name: Install composer Dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi
