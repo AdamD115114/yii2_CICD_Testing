@@ -3,6 +3,8 @@ name: Deploy SafetyManager for EcoOnline
 
 on: [workflow_dispatch]
 
+concurrency: production_environment
+
 jobs: 
   deploy: 
     runs-on: ubuntu-latest
@@ -17,11 +19,12 @@ jobs:
           extensions: gd --with-freetype=/usr/include/ --with-png=/usr/include/ --with-jpeg=/usr/include/, zip, exif
           tools: deployer
           
-      - name: Install composer Dependencies
-        run: composer install --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi
+      - name: update composer Dependencies
+        run: composer update --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi
 
       - name: Deploy
         uses: deployphp/action@v1
         with:
-          dep: deploy -vvv
+          dep: deploy
+          verbosity: -vvv
           private-key: ${{ secrets.PRIVATE_KEY }}
