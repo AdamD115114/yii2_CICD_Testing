@@ -26,6 +26,7 @@ jobs:
         uses: deployphp/action@v1
         with:
           deployer-version: "6.3.0"
-          dep: deploy
+          deployer-binary: "./vendor/bin/dep"
+          dep: test
           verbosity: -vvv
           private-key: ${{ secrets.PRIVATE_KEY }}
