@@ -31,5 +31,4 @@ jobs:
           deployer-version: "6.8.0"
           deployer-binary: "./vendor/bin/dep"
           dep: test
-          verbosity: -vvv
           private-key: ${{ secrets.PRIVATE_KEY }}
