@@ -19,8 +19,8 @@ jobs:
           extensions: gd --with-freetype=/usr/include/ --with-png=/usr/include/ --with-jpeg=/usr/include/, zip, exif
           tools: deployer
           
-      - name: update composer Dependencies
-        run: composer update --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi
+      - name: install composer Dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi --ignore-platform-reqs
 
       - name: Deploy
         uses: deployphp/action@v1
