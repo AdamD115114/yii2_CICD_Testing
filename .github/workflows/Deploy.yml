@@ -21,10 +21,7 @@ jobs:
           
       - name: install composer Dependencies
         run: composer install --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi --ignore-platform-reqs
-      
-      - name: Check PWD
-        run: pwd
-
+        
       - name: Print DIR - debug trying to find where vendor/bin/dep is
         run: ls -al */*  | awk -v OFS="\t" 'NR>1 { print $1, $6, $7, $9 }'
       
@@ -32,7 +29,7 @@ jobs:
         uses: deployphp/action@v1
         with:
           deployer-version: "6.8.0"
-          deployer-binary: "/vendor/bin/dep"
+          deployer-binary: "./vendor/bin/dep"
           dep: test
           verbosity: -vvv
           private-key: ${{ secrets.PRIVATE_KEY }}
